@@ -6,15 +6,12 @@
 // Programmer - Brandon Debison
 // Progject 2007 - Movie Store
 
-// need to fix the sort function to notes. 
-// need to add previous to the structs 
 
 #define MAX 10
 
 int count = 0;
 int fileStarted = 0;
 char filename[] = "movies.txt";
-//struct movie *m_movies, *current, *move, *begin, *last, *new2;
 struct movie *move, *last, *new2;
 
 
@@ -32,29 +29,25 @@ struct movie
 
 };
 
-// Function Section
-        struct movie addNewMovie(struct movie *first);
-    // 2. function to browse entries 
-        void printToScreen(struct movie *first);
-        void search(struct movie* first);
-        void modifymovie(struct movie *match);
-        // this needs to be updated to free the memory 
-        void deletemovie(struct movie *previous, struct movie *move);
-        void calculate(struct movie *first);
-        struct movie *sortmovies(struct movie *first);
-        struct movie *readFile(struct movie *first);
-    // Function to print to screen
-        void print_struct(struct movie *print_file);
-    // Function to malloc
-        struct movie *make_structure(void);
-        void write_toFile(struct movie *first);
-        void savefunction(struct movie *first);
-        int counterOfMovies(struct movie *first);
+    // Function Section
+    struct movie addNewMovie(struct movie *first);
+    void printToScreen(struct movie *first);
+    void search(struct movie* first);
+    void modifymovie(struct movie *match);
+    void deletemovie(struct movie *previous, struct movie *move);
+    void calculate(struct movie *first);
+    struct movie *sortmovies(struct movie *first);
+    struct movie *readFile(struct movie *first);
+    void print_struct(struct movie *print_file);
+    struct movie *make_structure(void);
+    void write_toFile(struct movie *first);
+    void savefunction(struct movie *first);
+    int counterOfMovies(struct movie *first);
 
-        struct movie *swapA(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right);
-        struct movie *swapB(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right);
-        struct movie *swapC(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right);
-        struct movie *swapD(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right);
+    struct movie *swapA(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right);
+    struct movie *swapB(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right);
+    struct movie *swapC(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right);
+    struct movie *swapD(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right);
 
 
 
@@ -104,8 +97,6 @@ int main () {
         puts("6. EXIT SYSTEM\n");
 
         puts("Please select the choices by entering the section number.\n");
-
-        
         
         scanf("%d", &sectionSelector);
         while ((ch=getchar()) != '\n' && ch != EOF);            
@@ -151,23 +142,23 @@ int main () {
                 
                 fileStarted ++;
                 
-                puts("\nPlease enter the movie name");
+                puts("\nPlease enter the movie name (No spaces)");
                 scanf("%s", start->movieName);
                 while ((ch=getchar()) != '\n' && ch != EOF);  
 
-                puts("\nPlease enter the Director"); 
+                puts("\nPlease enter the Director (No spaces)"); 
                 scanf("%s", start->director);
                 while ((ch=getchar()) != '\n' && ch != EOF);    
 
-                puts("\nPlease enter the Release Date, no spaces");
+                puts("\nPlease enter the Release Date (No spaces)");
                 scanf("%s", start->releaseDate);
                 while ((ch=getchar()) != '\n' && ch != EOF); 
 
-                puts("\nPlease enter the rating");
+                puts("\nPlease enter the rating (1-10)");
                 scanf("%d", &start->rating);
                 while ((ch=getchar()) != '\n' && ch != EOF); 
 
-                puts("\nPlease enter the cost per rental");
+                puts("\nPlease enter the cost per rental (No $)");
                 scanf("%lf", &start->costPerRental);
                 while ((ch=getchar()) != '\n' && ch != EOF); 
 
@@ -201,11 +192,11 @@ int main () {
                 count ++;
                 
 
-                puts("\nPlease enter the movie name");
+                puts("\nPlease enter the movie name (No spaces)");
                 scanf("%s", current->movieName);
                 while ((ch=getchar()) != '\n' && ch != EOF);  
 
-                puts("\nPlease enter the Director"); 
+                puts("\nPlease enter the Director (No spaces)"); 
                 scanf("%s", current->director);
                 while ((ch=getchar()) != '\n' && ch != EOF);    
 
@@ -217,7 +208,7 @@ int main () {
                 scanf("%d", &current->rating);
                 while ((ch=getchar()) != '\n' && ch != EOF); 
 
-                puts("\nPlease enter the cost per rental");
+                puts("\nPlease enter the cost per rental (No $)");
                 scanf("%lf", &current->costPerRental);
                 while ((ch=getchar()) != '\n' && ch != EOF); 
 
@@ -284,7 +275,6 @@ void search(struct movie* first)
     int ch;
     int matchtest = 0;
 
-        
         puts("\n");
 
         puts("\nPlease enter the movie name");
@@ -317,15 +307,14 @@ void search(struct movie* first)
                 previous = move;
                 move = move->next;                
             }                
-                      
             
         }
 
         if (matchtest == 0)
-            {
-                puts("There was no match");
-                return;
-            }        
+        {
+            puts("There was no match");
+            return;
+        }        
 }
 
 
@@ -333,18 +322,16 @@ void search(struct movie* first)
 
 void modifymovie(struct movie* match)
 {
-    //struct movie *move;
-    //move = match;
     int ch;
     char tempc[35];
     int tempi;
     double tempd;
     
-    puts("\nPlease enter the movie name");
+    puts("\nPlease enter the movie name No spaces)");
     scanf("%s", match->movieName);
     while ((ch=getchar()) != '\n' && ch != EOF);  
 
-    puts("\nPlease enter the Director"); 
+    puts("\nPlease enter the Director (No spaces)"); 
     scanf("%s", match->director);
     while ((ch=getchar()) != '\n' && ch != EOF);    
 
@@ -352,11 +339,11 @@ void modifymovie(struct movie* match)
     scanf("%s", match->releaseDate);
     while ((ch=getchar()) != '\n' && ch != EOF); 
 
-    puts("\nPlease enter the rating");
+    puts("\nPlease enter the rating (1-10)");
     scanf("%d", &match->rating);
     while ((ch=getchar()) != '\n' && ch != EOF); 
 
-    puts("\nPlease enter the cost per rental");
+    puts("\nPlease enter the cost per rental (No $)");
     scanf("%lf", &match->costPerRental);
     while ((ch=getchar()) != '\n' && ch != EOF); 
 
@@ -381,15 +368,10 @@ void deletemovie(struct movie *previous,struct movie *move)
 {    
     struct movie *next;
     previous->next = move->next;
-
-   
-    //need to free() the data 
     
     return;
 }
  
-
-
 // 4. function to calculate the months earnings 
 
 void calculate(struct movie* first)
@@ -412,14 +394,15 @@ void calculate(struct movie* first)
         
         move = move->next;
     }
-        printf("Earnings = %.2f \n", earnings);
+
+    printf("Earnings = %.2f \n", earnings);
 
 }
 
 // 5. function to sort and call into the other functions 
 
 int counterOfMovies(struct movie *first) {
-        printf("Made it to counter\n");
+    printf("Made it to counter\n");
     
     int counter = 1;
     struct movie *i;
@@ -429,7 +412,6 @@ int counterOfMovies(struct movie *first) {
     {
         counter = counter + 1;
         i = i->next;
-        
     }
 
     return counter;
@@ -440,10 +422,7 @@ int counterOfMovies(struct movie *first) {
     {
         printf("Made it to sort\n");
         
-    
-
         struct movie *next, *left, *last_left, *right, *last_right, *end, *start;
-        //start = first;
         int counter = counterOfMovies(first);
         printf("Made it past counter\n");
         printf("counter is %d \n", counter);
@@ -454,53 +433,22 @@ int counterOfMovies(struct movie *first) {
         }
         printf("end name is %s end next is %s\n", end->movieName, end->next->movieName);
 
-        /*for (int x = 0; x < counter; x++) {
-            printf("getting to end %d ,%s \n", x, end->movieName);
-            end = end->next;
-
-                }*/
-
-        //for (int x = 0; x < counter; x++) {end = first->next;}
-        //left = start;
         left = first;
-        //last_left = start;
         last_left = first;
 
         last_right = left;
         right = left;
         printf("left is %s and right is %s", left->movieName, right->movieName);
 
-        //bool swap = false;
-
-       /* while(current->next != NULL)
-        {
-            counter++;
-            current = current->next;
-        }*/
 
         for (int i = 1; i < counter -1; i++){
             for (int j = i+1; j < counter; j++) {
 
                 printf("Made it to buble sort\n");
-               /* for (int x = 0; x < counter; x++) {end = first->next;
-        printf("getting to end %s\n", first->movieName);
-                }*/
-
-
+            
                 last_right = right;
                 right = right->next;
                 printf("right is now right-next = %s\n" , right->movieName);
-                //if (strcmp(left->movieName, right->movieName) > 0){swap = true;};
-/*
-                if(swap==true && left==start && right==end) {
-                    *start = swapA(start, end, left, right, last_left, last_right);
-                } else if (swap==true && left==start && right!=end) {
-                    *start = swapB(start, end, left, right, last_left, last_right);
-                } else if (swap==true && left!=start && right==end) {
-                    *start = swapC(start, end, left, right, last_left, last_right);
-                } else if (swap==true && left!=start && right!=end) {
-                    *start = swapD(start, end, left, right, last_left, last_right);
-                } */
 
                 if((strcmp(left->movieName, right->movieName) != 0) && left==first && right==end) {
                     first = swapA(first, end, left, right, last_left, last_right);
@@ -521,8 +469,6 @@ int counterOfMovies(struct movie *first) {
             }
         }
 
-
-
         return first;
     }
 
@@ -533,7 +479,6 @@ struct movie *swapA(struct movie *first,struct movie *end,struct movie *left,str
 {
         printf("in Swap A, first is = %s\n", first->movieName);
         struct movie *start;
-        //next = next;
         left = left;
         last_left = last_left;
         right = right;
@@ -551,17 +496,8 @@ struct movie *swapA(struct movie *first,struct movie *end,struct movie *left,str
 }
 
 struct movie *swapB(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right) {
-    //struct movie *start, *next, *left, *last_left, *right, *last_right, *end;
         struct movie *temp, *start;
         printf("in Swap B, first is = %s\n",first->movieName);
-
-       /* next = next;
-        left = left;
-        last_left = last_left;
-        right = right;
-        last_right = last_right; 
-        end = end; 
-        start = first; */
 
         temp = right->next;
         right->next = left->next;
@@ -574,46 +510,29 @@ struct movie *swapB(struct movie *first,struct movie *end,struct movie *left,str
     return start;
 }
 struct movie *swapC(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right) {
-    //struct movie *start, *next, *left, *last_left, *right, *last_right, *end;
-        //next = next;
         struct movie *start;
         printf("in Swap C\n first is = %s \n",first->movieName);
-/*
-        left = left;
-        last_left = last_left;
-        right = right;
-        last_right = last_right; 
-        end = end; 
-        start = first;*/
 
         last_left->next = right;
         right->next = last_right;
         last_right->next = left;
         left->next = NULL;
 
-
     return start;
 }
 struct movie *swapD(struct movie *first,struct movie *end,struct movie *left,struct movie *right,struct movie *last_left,struct movie *last_right) {
-        //struct movie *start, *next, *left, *last_left, *right, *last_right, *end;
         struct movie *temp;
         struct movie *start;
         printf("in Swap D\n");
         printf("first is %s, first next is %s\n", first->movieName, first->next->movieName);
-    start = first;
-                /*next = next;
-                //left = left;
-                last_left = last_left;
-                right = right;
-                last_right = last_right; 
-                end = end; 
-                start = first;*/
+        
+        start = first;
+        last_left->next = right;
+        temp = right->next;
+        right->next = left->next;
+        last_right->next = left;
+        left->next = temp;
 
-                last_left->next = right;
-                temp = right->next;
-                right->next = left->next;
-                last_right->next = left;
-                left->next = temp;
         printf("bottom of Swap D\n");
         printf("start = %s, first = %s\n", start->movieName, first->movieName);
 
@@ -627,7 +546,6 @@ struct movie *swapD(struct movie *first,struct movie *end,struct movie *left,str
         FILE *fp;
         struct movie *current;
         current = first;
-        //first = make_structure();
         int firstLine = 0;
         fileStarted = 1;
 
@@ -728,7 +646,6 @@ void savefunction(struct movie *first)
     {
         struct movie *move;
         move = first;
-        //char empty[]= {" "};
 
         FILE *fp;
         fp = fopen("movies.txt", "w");
@@ -736,21 +653,19 @@ void savefunction(struct movie *first)
        
             while(move->next!=NULL) 
             {
-                
-                    fprintf(fp, "%s ", move->movieName );
-                    fprintf(fp, "%s ", move->director );
-                    fprintf(fp, "%s ", move->releaseDate );
-                    fprintf(fp, "%d ", move->rating);
-                    fprintf(fp, "%1.2f ", move->costPerRental);
-                    fprintf(fp, "%d ", move->numberOfViews);
-                    fprintf(fp, "%d ", move->rentedToId);
-                    fprintf(fp, "%d ", move->rentalReturnDate);
-                    fprintf(fp, "\n");
+                fprintf(fp, "%s ", move->movieName );
+                fprintf(fp, "%s ", move->director );
+                fprintf(fp, "%s ", move->releaseDate );
+                fprintf(fp, "%d ", move->rating);
+                fprintf(fp, "%1.2f ", move->costPerRental);
+                fprintf(fp, "%d ", move->numberOfViews);
+                fprintf(fp, "%d ", move->rentedToId);
+                fprintf(fp, "%d ", move->rentalReturnDate);
+                fprintf(fp, "\n");
 
                 move = move->next;
             }
                 
-
                 fprintf(fp, "%s ", move->movieName );
                 fprintf(fp, "%s ", move->director );
                 fprintf(fp, "%s ", move->releaseDate );
@@ -761,7 +676,6 @@ void savefunction(struct movie *first)
                 fprintf(fp, "%d ", move->rentalReturnDate);
                 fprintf(fp, "\n");
                           
-
         fclose(fp);
         return;    
 
